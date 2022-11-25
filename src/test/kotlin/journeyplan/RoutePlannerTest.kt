@@ -55,10 +55,9 @@ class RoutePlannerTest {
         Segment(southKensington, knightsbridge, piccadillyLine, 3),
         Segment(knightsbridge, hydeParkCorner, piccadillyLine, 4),
         Segment(hydeParkCorner, greenPark, piccadillyLine, 2),
-        Segment(greenPark, oxfordCircus, victoriaLine, 1),
+        Segment(greenPark, oxfordCircus, victoriaLine, 1)
       )
     )
-
 
   @Test
   fun `can calculate number of changes`() {
