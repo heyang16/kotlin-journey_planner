@@ -10,7 +10,6 @@ class SubwayMap(private val segments: List<Segment>) {
     // Finds all routes linking 2 stations
     fun helper(
       origin: Station,
-      destination: Station,
       visited: List<Station>
     ): List<Route> {
       return if (origin == destination) {
@@ -25,7 +24,7 @@ class SubwayMap(private val segments: List<Segment>) {
         // Converts each segment extending out from the origin into a sub-route
         // Adds the origin into the list of visited stations
         fromOrigin.map { s ->
-          helper(s.to, destination, visited + s.from).map { r ->
+          helper(s.to, visited + s.from).map { r ->
             // Prepends the origin to every sub-route
             Route(listOf(s) + r.segments)
           }
@@ -48,7 +47,7 @@ class SubwayMap(private val segments: List<Segment>) {
       return true
     }
 
-    return helper(origin, destination, emptyList()).filter(::checkRoute)
+    return helper(origin, emptyList()).filter(::checkRoute)
       .sortedBy(optimisingFor)
   }
 }
